@@ -9,6 +9,7 @@
 <body>
   <main class="stage">
     <img id="slideshow" src="" alt="Jungle postcard">
+    <p class="phrase" id="phraseLine"></p>
     <p class="hint" id="audioHint">Click anywhere to start sound playback</p>
   </main>
 
@@ -35,11 +36,31 @@
       "sounds/output_3.wav",
       "sounds/output_4.wav"
     ];
+    const phrases = [
+      "Kr'shaa ni mrr.",
+      "Vohl-ka t'so.",
+      "Rrr-un thi k'tul.",
+      "Ma'na ho-mi?",
+      "Sli-vax ni r'ka.",
+      "K'to-ri ba'shur.",
+      "Nu-mi t'so ra.",
+      "Zhul-ka ni tro.",
+      "K'rehl vo-nu.",
+      "Bra-ka mrr r'ka.",
+      "Rrr-ohl ni lu.",
+      "Sha-ka thi-ni?",
+      "Vohl-mi r'sa.",
+      "K'thun ni va-ka.",
+      "Mi-ra t'so-ka.",
+      "Kra-loo ni thi."
+    ];
 
     const imageEl = document.getElementById("slideshow");
+    const phraseEl = document.getElementById("phraseLine");
     const hintEl = document.getElementById("audioHint");
 
     let imageIndex = 0;
+    let phraseIndex = 0;
     let soundIndex = 0;
     let audioStarted = false;
 
@@ -49,9 +70,12 @@
 
     function startImageLoop() {
       showImage(imageIndex);
+      phraseEl.textContent = phrases[phraseIndex];
       setInterval(() => {
         imageIndex = (imageIndex + 1) % images.length;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
         showImage(imageIndex);
+        phraseEl.textContent = phrases[phraseIndex];
       }, 3000);
     }
 
@@ -80,3 +104,5 @@
   </script>
 </body>
 </html>
+
+

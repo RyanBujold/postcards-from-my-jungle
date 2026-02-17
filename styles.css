@@ -33,6 +33,14 @@ body {
   background: rgba(255, 255, 255, 0.08);
 }
 
+.phrase {
+  margin-top: 12px;
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+  color: #f7ffd1;
+}
+
 .hint {
   margin-top: 14px;
   color: var(--accent);

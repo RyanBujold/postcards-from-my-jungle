@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Postcards From My Jungle</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="stage">
+    <img id="slideshow" src="" alt="Jungle postcard">
+    <p class="hint" id="audioHint">Click anywhere to start sound playback</p>
+  </main>
+
+  <script>
+    const images = [
+      "images/animal_00.png", "images/animal_01.png", "images/animal_02.png", "images/animal_03.png",
+      "images/animal_04.png", "images/animal_05.png", "images/animal_06.png", "images/animal_07.png",
+      "images/animal_08.png", "images/animal_09.png", "images/animal_10.png", "images/animal_11.png",
+      "images/animal_12.png", "images/animal_13.png", "images/animal_14.png", "images/animal_15.png",
+      "images/animal_16.png", "images/animal_17.png", "images/animal_18.png", "images/animal_19.png",
+      "images/animal_20.png", "images/animal_21.png", "images/animal_22.png", "images/animal_23.png",
+      "images/animal_24.png", "images/animal_25.png", "images/animal_26.png", "images/animal_27.png",
+      "images/animal_28.png", "images/animal_29.png", "images/animal_30.png", "images/animal_31.png",
+      "images/animal_32.png", "images/animal_33.png", "images/animal_34.png", "images/animal_35.png",
+      "images/animal_36.png", "images/animal_37.png", "images/animal_38.png", "images/animal_39.png",
+      "images/animal_40.png", "images/animal_41.png", "images/animal_42.png", "images/animal_43.png",
+      "images/animal_44.png", "images/animal_45.png", "images/animal_46.png", "images/animal_47.png",
+      "images/animal_48.png", "images/animal_49.png"
+    ];
+
+    const sounds = [
+      "sounds/output_1.wav",
+      "sounds/output_2.wav",
+      "sounds/output_3.wav",
+      "sounds/output_4.wav"
+    ];
+
+    const imageEl = document.getElementById("slideshow");
+    const hintEl = document.getElementById("audioHint");
+
+    let imageIndex = 0;
+    let soundIndex = 0;
+    let audioStarted = false;
+
+    function showImage(index) {
+      imageEl.src = images[index];
+    }
+
+    function startImageLoop() {
+      showImage(imageIndex);
+      setInterval(() => {
+        imageIndex = (imageIndex + 1) % images.length;
+        showImage(imageIndex);
+      }, 3000);
+    }
+
+    function playSoundLoop() {
+      const audio = new Audio(sounds[soundIndex]);
+      audio.addEventListener("ended", () => {
+        soundIndex = (soundIndex + 1) % sounds.length;
+        playSoundLoop();
+      });
+      audio.play().catch(() => {
+        // If playback is interrupted, wait for another user interaction.
+        audioStarted = false;
+        hintEl.textContent = "Click anywhere to resume sound playback";
+      });
+    }
+
+    function handleFirstInteraction() {
+      if (audioStarted) return;
+      audioStarted = true;
+      hintEl.textContent = "Sound playback is active";
+      playSoundLoop();
+    }
+
+    document.addEventListener("click", handleFirstInteraction);
+    startImageLoop();
+  </script>
+</body>
+</html>

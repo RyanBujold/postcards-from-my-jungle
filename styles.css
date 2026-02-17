@@ -1,0 +1,41 @@
+:root {
+  --bg-1: #0f2a20;
+  --bg-2: #1a4736;
+  --text: #f6ffe2;
+  --accent: #e4ff7a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, var(--bg-2), var(--bg-1) 70%);
+  color: var(--text);
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+.stage {
+  width: min(92vw, 1080px);
+  text-align: center;
+}
+
+#slideshow {
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hint {
+  margin-top: 14px;
+  color: var(--accent);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}

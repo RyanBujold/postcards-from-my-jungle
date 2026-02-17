@@ -1,4 +1,4 @@
-# postcards-from-my-jungle
+# My Strange Zoo
 ## Strategies for training the model
 For training the models, I tried to experiment with the different parameters available to me. I increased and decreased things like the number of epochs or the database size. For the prompts I tried to keep them varied by describing the same thing with differing language. 
 
@@ -14,3 +14,8 @@ The results were similar sounds of animals and what you would expect from the ju
 
 ## Ideas for future improvements
 Overall I think it could be vastly improved with several hundred more epochs, bigger images and more training data. It’s a bit of an obvious answer but with the results here, it’s very clear that’s what would improve it the most. I would also say that the biggest difference came from changing the resolution of the images. So perhaps that might be a priority for future iterations. For the sounds, it would just need more descriptive prompting. The language I think turned out alright. My biggest takeaway from this project is the scale of large language models is so much bigger than I can imagine to get the level of output we get today.
+
+*Additional Notes*
+Google Gemini was used to generate the made up language with the prompt “Generate a fictional animal language and give me 16 example sentences of that language.”
+OpenAI Codex VSCode extension was used to code the Html, Script and Css for the website. 
+16$ was spend on Google Colab to make this project possible. 
